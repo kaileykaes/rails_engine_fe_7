@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Merchant do
   before(:each) do
     @merchant = Merchant.new({
-      id: 1, 
+      id: '1', 
       name: "Schroeder-Jerde"
     })
   end
