@@ -11,21 +11,15 @@ RSpec.describe MerchantService do
     end
   end
 
-  describe 'instance methods' do 
-    it '#conn' do 
-      response = @ms.conn
-      expect(response).to be_a Faraday::Connection
-    end
-
-    it '#get_url' do 
-      response = @ms.get_url('/merchants')
+  describe 'class method' do 
+    it '#call' do 
+      response = MerchantService.call('/api/v1/merchants')
       expect(response).to be_a Hash
       expect(response[:data]).to be_a Array
 
       merchant_data = response[:data].first
-
       expect(merchant_data).to have_key(:id)
-      expect(merchant_data[:id]).to be_an Integer
+      expect(merchant_data[:id]).to be_a String
 
       expect(merchant_data).to have_key(:attributes)
       expect(merchant_data[:attributes]).to be_a Hash
