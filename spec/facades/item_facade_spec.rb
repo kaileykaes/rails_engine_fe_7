@@ -39,5 +39,12 @@ RSpec.describe MerchantFacade do
         expect(item.merchant_id).to be_a Integer
       end
     end
+
+    it '#item' do 
+      item = @if.item(4)
+      expect(item).to be_a Item
+      expect(item.id).to eq(4)
+      expect(item.name).to eq("Item Nemo Facere")
+    end
   end
 end

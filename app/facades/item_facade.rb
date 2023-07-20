@@ -11,6 +11,10 @@ class ItemFacade
     end
   end
 
+  def item(id)
+    argument = format_item(item_data(id))
+    Item.new(argument)
+  end
   private
 
   def merchant_items_data(id)
@@ -21,14 +25,22 @@ class ItemFacade
     ItemService.call("api/v1/items")[:data]
   end
 
+  def item_data(id)
+    ItemService.call("/api/v1/items/#{id}")[:data]
+  end
+
   def format_items(data)
     data.map do |datum|
-      { id: datum[:id], 
-        name: datum[:attributes][:name], 
-        description: datum[:attributes][:description], 
-        unit_price: datum[:attributes][:unit_price], 
-        merchant_id: datum[:attributes][:merchant_id]
-      }
+      format_item(datum)
     end
+  end
+
+  def format_item(datum)
+    { id: datum[:id], 
+      name: datum[:attributes][:name], 
+      description: datum[:attributes][:description], 
+      unit_price: datum[:attributes][:unit_price], 
+      merchant_id: datum[:attributes][:merchant_id]
+    }
   end
 end

@@ -23,9 +23,7 @@ class MerchantFacade
 
   def format_index(data)
     data.map do |datum|
-      { id: datum[:id], 
-        name: datum[:attributes][:name]
-      }
+      format_datum(datum)
     end
   end
 
