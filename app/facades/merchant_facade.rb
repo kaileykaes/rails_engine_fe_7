@@ -1,7 +1,7 @@
 class MerchantFacade
 
   def merchants 
-    format_data(index_data).map do |merchant_datum|
+    format_index(index_data).map do |merchant_datum|
       Merchant.new(merchant_datum)
     end
   end
@@ -11,6 +11,11 @@ class MerchantFacade
     Merchant.new(argument)
   end
 
+  def merchant_items(merchant_id)
+    items_data(id)
+    require 'pry'; binding.pry
+  end
+
   private
 
   def index_data 
@@ -18,10 +23,14 @@ class MerchantFacade
   end
   
   def merchant_data(id)
-    response = MerchantService.call("/api/v1/merchants/#{id}")[:data]
+    MerchantService.call("/api/v1/merchants/#{id}")[:data]
   end
 
-  def format_data(data)
+  def items_data(id)
+    MerchantService.call("/api/v1/merchants/#{id}/items")[:data]
+  end
+
+  def format_index(data)
     data.map do |datum|
       { id: datum[:id], 
         name: datum[:attributes][:name]

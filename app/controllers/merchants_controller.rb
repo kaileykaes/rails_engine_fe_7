@@ -6,7 +6,7 @@ class MerchantsController < ApplicationController
   end
 
   def show
-    require 'pry'; binding.pry
+    @merchant = @facade.merchant(params[:id])
   end
   
   private
