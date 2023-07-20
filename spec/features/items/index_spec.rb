@@ -21,4 +21,4 @@ RSpec.describe '/items', type: :feature do
       expect(page).to have_link("Item Recusandae Voluptas", href: '/items/97')
     end
   end
-endr
+end
