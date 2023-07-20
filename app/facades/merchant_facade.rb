@@ -11,11 +11,6 @@ class MerchantFacade
     Merchant.new(argument)
   end
 
-  def merchant_items(merchant_id)
-    items_data(id)
-    require 'pry'; binding.pry
-  end
-
   private
 
   def index_data 
@@ -24,10 +19,6 @@ class MerchantFacade
   
   def merchant_data(id)
     MerchantService.call("/api/v1/merchants/#{id}")[:data]
-  end
-
-  def items_data(id)
-    MerchantService.call("/api/v1/merchants/#{id}/items")[:data]
   end
 
   def format_index(data)
