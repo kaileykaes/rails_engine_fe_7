@@ -4,6 +4,10 @@ class MerchantsController < ApplicationController
   def index
     @merchants = @facade.merchants
   end
+
+  def show
+    require 'pry'; binding.pry
+  end
   
   private
   def facade 

@@ -22,5 +22,12 @@ RSpec.describe MerchantFacade do
         expect(merchant.name).to be_a String
       end
     end
+
+    it '#merchant' do 
+      merchant = @mf.merchant(1)
+      expect(merchant).to be_a Merchant
+      expect(merchant.id).to eq(1)
+      expect(merchant.name).to eq("Schroeder-Jerde")
+    end
   end
 end
