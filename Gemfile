@@ -54,7 +54,10 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'pry'
+  gem 'launchy'
 end
+
+gem 'faraday'
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
