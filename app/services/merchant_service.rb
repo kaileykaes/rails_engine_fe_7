@@ -7,7 +7,7 @@ class MerchantService
 
     private
     def conn
-      Faraday.new('http://[::1]:4000')
+      Faraday.new('http://[::1]:3000')
     end
 
     def parse_data(data)

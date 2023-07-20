@@ -28,7 +28,7 @@ RSpec.describe 'Merchant Show page', type: :feature do
 
     it 'has items of merchant' do 
       visit "/merchants/1" do 
-
+save_and_open_page  
         within(".items") do 
           expect(page).to have_content("Item Nemo Facere")
           expect(page).to have_content("Numquam officiis reprehenderit eum ratione neque tenetur.")
