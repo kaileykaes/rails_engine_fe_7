@@ -1,14 +1,24 @@
 class ItemFacade
   def merchant_items(merchant_id)
-    items = format_items(merchant_items_data(merchant_id)).map do |item_info|
+    format_items(merchant_items_data(merchant_id)).map do |item_info|
+      Item.new(item_info)
+    end
+  end
+
+  def all_items
+    format_items(all_items_data).map do |item_info|
       Item.new(item_info)
     end
   end
 
   private
-  
+
   def merchant_items_data(id)
-    MerchantService.call("/api/v1/merchants/#{id}/items")[:data]
+    ItemService.call("/api/v1/merchants/#{id}/items")[:data]
+  end
+
+  def all_items_data
+    ItemService.call("api/v1/items")[:data]
   end
 
   def format_items(data)
