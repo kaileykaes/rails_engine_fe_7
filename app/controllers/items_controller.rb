@@ -1,7 +1,5 @@
 class ItemsController < ApplicationController
   def index
-    require 'pry'; binding.pry
+    @items = ItemFacade.new.all_items
   end
-
-  
 end
