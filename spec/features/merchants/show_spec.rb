@@ -7,7 +7,7 @@ RSpec.describe 'Merchant Show page', type: :feature do
 
       click_on "Schroeder-Jerde"
 
-      expect(current_path).to eq("merchants/1")
+      expect(current_path).to eq("/merchants/1")
     end
 
     it 'has name of merchant' do 
